@@ -25,7 +25,7 @@ constructor(props) {
   handleSubmit = (event) => {
     event.preventDefault();
     var index = this.getSameCount(this.state.stone,this.state.jewel);
-    alert('There are ' + index + ' jewel in stones string');
+    alert('There are ' + index + ' jewels in your stones string');
   }
 
   getSameCount = (stone,jewel) => {
