@@ -9,7 +9,8 @@ constructor(props) {
   super(props);
   this.state ={
     jewel:'',
-    stone:''
+    stone:'',
+    ckJ: false
   }
 }
 
@@ -22,22 +23,36 @@ constructor(props) {
     });
 
     if(name === 'jewel'){
-      Array.prototype.map.call(value, (obj,i) =>{
-          if(value.indexOf(obj,i+1)===-1 ){
-            return obj;
-          } else {
-            alert("'"+ obj + "'"+ ' is repeating');
-          }
-        }
-      ).join("");
+      this.repeatCheck(value);
     }
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    var index = this.getSameCount(this.state.stone,this.state.jewel);
-    alert('There are ' + index + ' jewels in your stones string');
+
+  repeatCheck = (value) => {
+    Array.prototype.map.call(value, (obj,i) =>{
+      if(value.indexOf(obj,i+1)===-1 ){
+        return obj;
+      } else {
+        alert("'"+ obj + "'"+ ' is repeating, Please enter a non-repeat value in the "J - jewels strings"');
+        this.setState({
+          ckJ: true
+        })
+      }
+    }).join("");
   }
+
+ 
+    handleSubmit = (event) => {
+      event.preventDefault();
+      var {ckJ} = this.state;
+      if(ckJ) {
+        alert('Please enter a non-repeat value in the "J - jewels strings"')
+      } else {
+        var index = this.getSameCount(this.state.stone,this.state.jewel);
+        alert('There are ' + index + ' jewels in your stones string');
+      }
+    }
+  
 
   getSameCount = (stone,jewel) => {
     let count = 0;
