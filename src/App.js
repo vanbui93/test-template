@@ -36,8 +36,8 @@ constructor(props) {
       let idx = obj.findIndex(s => s === str);
       if(idx >= 0){
         count++;
-        obj.splice(idx, 1);
       }
+      
     }
     return count;
   }
