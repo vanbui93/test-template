@@ -23,7 +23,7 @@ constructor(props) {
 
     if(name === 'jewel'){
       Array.prototype.map.call(value, (obj,i) =>{
-          if(value.indexOf(obj,i+1)==-1 ){
+          if(value.indexOf(obj,i+1)===-1 ){
             return obj;
           } else {
             alert("'"+ obj + "'"+ ' is repeating');
