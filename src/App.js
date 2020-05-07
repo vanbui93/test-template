@@ -19,7 +19,18 @@ constructor(props) {
     var value = target.value;
     this.setState({
       [name]: value
-    })
+    });
+
+    if(name === 'jewel'){
+      Array.prototype.map.call(value, (obj,i) =>{
+          if(value.indexOf(obj,i+1)==-1 ){
+            return obj;
+          } else {
+            alert("'"+ obj + "'"+ ' is repeating');
+          }
+        }
+      ).join("");
+    }
   }
 
   handleSubmit = (event) => {
@@ -36,11 +47,11 @@ constructor(props) {
       if(idx >= 0){
         count++;
       }
-      
     }
     return count;
   }
   
+    
 
   render() {  
 
